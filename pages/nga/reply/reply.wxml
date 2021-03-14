@@ -1,0 +1,7 @@
+<!--pages/nga/reply/reply.wxml-->
+<view>
+  <text>这是一个标题</text>
+</view>
+<view wx:for="{{dataList}}" wx:key="id">
+  
+</view>

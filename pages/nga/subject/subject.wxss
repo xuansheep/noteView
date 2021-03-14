@@ -1,0 +1,6 @@
+/* pages/nga/subject.wxss */
+.search-input {
+  border: 1rpx #f3f3f3 solid;
+  height: 30rpx;
+  margin-bottom: 10rpx;
+}
