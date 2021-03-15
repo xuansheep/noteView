@@ -1,0 +1,16 @@
+<!--components/detail/detail.wxml-->
+<view>
+  <view>
+    <view>
+      <cover-image>{{}}</cover-image>
+    </view>
+    <view>
+      <view>
+        <text></text>
+      </view>
+      <view>
+        <text></text>
+      </view>
+    </view>
+  </view>
+</view>

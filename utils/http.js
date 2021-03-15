@@ -31,19 +31,21 @@ function getToken() {
   let promise = new Promise((resolve, reject) => {
     var app = getApp()
     if(!app.globalData.token) {
-      wx.request({
-        url: server_url + ports.user.signIn,
-        method: 'POST',
-        success: (res) => {
-          wx.stopPullDownRefresh();
-          app.globalData.token = res.data.data.token
-          resolve(app.globalData.token)
-        },
-        fail: function (res) {
-          wx.stopPullDownRefresh();
-          reject(app.globalData.token)
-        }
-      })
+      // wx.request({
+      //   url: server_url + ports.user.signIn,
+      //   method: 'POST',
+      //   success: (res) => {
+      //     wx.stopPullDownRefresh();
+      //     app.globalData.token = res.data.data.token
+      //     resolve(app.globalData.token)
+      //   },
+      //   fail: function (res) {
+      //     wx.stopPullDownRefresh();
+      //     reject(app.globalData.token)
+      //   }
+      // })
+      app.globalData.token = res.data.data.token
+      resolve(app.globalData.token)
     }else {
       resolve(app.globalData.token)
     }
@@ -52,8 +54,6 @@ function getToken() {
 }
 
 function fun(port, type, data, contentType) {
-  console.log(port)
-  console.log("data", data)
   let promise = new Promise((resolve, reject) => {
     getToken().then((token) => {
       wx.request({
@@ -70,7 +70,7 @@ function fun(port, type, data, contentType) {
             resolve(res.data.data)
           } else {
             wx.showToast({
-              title: res.data.subMsg ? res.data.subMsg : res.data.msg,
+              title: res.data.message,
               icon: 'none',
               duration: 2000
             })
@@ -78,7 +78,7 @@ function fun(port, type, data, contentType) {
         },
         fail: function (res) {
           wx.stopPullDownRefresh();
-          reject(res.data.message)
+          reject(res)
         }
       })
     })

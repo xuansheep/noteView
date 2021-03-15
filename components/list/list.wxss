@@ -1,0 +1,12 @@
+/* components/list/list.wxss */
+.list {
+  border-bottom: 1rpx #cccccc solid;
+  padding: 30rpx 8px;
+}
+.list-title {
+  font-size: 30rpx;
+}
+.list-description {
+  font-size: 24rpx;
+  color: #cccccc;
+}

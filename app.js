@@ -20,6 +20,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    token: '',
+    token: 'xcx_auth_string',
   }
 })

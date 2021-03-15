@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "i-list": "/components/list/list"
+  },
   "navigationBarTitleText": "帖子"
 }

@@ -1,4 +1,9 @@
 <!--pages/nga/subject.wxml-->
 <scroll-view>
-  
+  <i-list wx:for="{{dataList}}" wx:key="id" 
+  title="{{item.subject}}" 
+  description="{{item.author}}"
+  bindtap="toReply"
+  data-tid="{{item.tid}}"
+  ></i-list>
 </scroll-view>

@@ -11,7 +11,7 @@ Page({
     dataList: [],
     form: {
       page: 1,
-      size: 15,
+      size: 20,
       word: '',
     }
   },
