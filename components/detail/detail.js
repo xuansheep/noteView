@@ -11,6 +11,10 @@ Component({
     description: {
       type: String,
       value: ''
+    },
+    content: {
+      type: String,
+      value: ''
     }
   },
   data: {

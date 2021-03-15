@@ -1,6 +1,6 @@
 /* components/list/list.wxss */
 .list {
-  border-bottom: 1rpx #cccccc solid;
+  border-bottom: 1rpx #ececec solid;
   padding: 30rpx 8px;
 }
 .list-title {
@@ -8,5 +8,5 @@
 }
 .list-description {
   font-size: 24rpx;
-  color: #cccccc;
+  color: #aaaaaa;
 }

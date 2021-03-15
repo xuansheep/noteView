@@ -1,1 +1,26 @@
 /* components/detail/detail.wxss */
+.detail {
+  border-bottom: 1rpx #cccccc solid;
+  padding: 30rpx 8px;
+}
+.detail-avatar {
+  height: 80rpx;
+  width: 80rpx;
+  float: left;
+  border-radius: 5px;
+}
+.header-right {
+  margin-left: 90rpx;
+}
+.detail-name {
+  font-size: 30rpx;
+}
+.detail-description {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #aaaaaa;
+}
+.detail-content {
+  margin-top: 20rpx;
+  font-size: 32rpx;
+}

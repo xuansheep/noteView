@@ -70,7 +70,6 @@ Page({
       res.records.forEach(item => {
         list.push(item)
       })
-      console.log(list)
       this.setData({dataList: list})
     })
   },

@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "i-detail": "/components/detail/detail"
+  },
   "navigationBarTitleText": "回复"
 }

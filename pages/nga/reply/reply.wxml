@@ -2,6 +2,6 @@
 <view>
   <text>这是一个标题</text>
 </view>
-<view wx:for="{{dataList}}" wx:key="id">
-  
+<view>
+  <i-detail wx:for="{{dataList}}" wx:key="id" avatar="{{item.avatar}}" name="{{item.username}}" content="{{item.content}}"></i-detail>
 </view>

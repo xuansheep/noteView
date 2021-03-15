@@ -1,16 +1,19 @@
 <!--components/detail/detail.wxml-->
-<view>
+<view class="detail">
   <view>
-    <view>
-      <cover-image>{{}}</cover-image>
+    <view class="detail-avatar">
+      <cover-image style="border-radius: 5px" src="{{avatar}}"></cover-image>
     </view>
-    <view>
-      <view>
-        <text></text>
+    <view class="header-right">
+      <view class="detail-name">
+        <text>{{name}}</text>
       </view>
-      <view>
-        <text></text>
+      <view class="detail-description">
+        <text>###</text>
       </view>
     </view>
+  </view>
+  <view class="detail-content">
+    <rich-text nodes="{{content}}"></rich-text>
   </view>
 </view>
