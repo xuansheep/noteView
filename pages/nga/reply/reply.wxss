@@ -1,6 +1,7 @@
 /* pages/nga/reply/reply.wxss */
 .subject-text {
+  color: var(--title);
   font-size: 42rpx;
   font-weight: bold;
-  padding: 30rpx 12px;
+  padding: 30rpx 16rpx;
 }

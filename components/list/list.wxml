@@ -5,8 +5,18 @@
   </view>
   <view class="list-description">
     <view>
-      <i-icon type="mine_fill" size="18" color="#aaaaaa" />
-      {{description}}
+      <view class="list-description-icon">
+        <i-icon type="mine_fill" size="16" color="var(--subColor)" />
+      </view>
+      <view class="list-description-name">
+        {{name}}
+      </view>
+      <view style="margin-left: 20rpx" class="list-description-icon">
+        <i-icon type="interactive_fill" size="16" color="var(--subColor)" />
+      </view>
+      <view class="list-description-replies">
+        {{replies}}
+      </view>
     </view>
   </view>
 </view>

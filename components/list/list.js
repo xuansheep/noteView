@@ -4,7 +4,15 @@ Component({
       type: String,
       value: ''
     },
-    description: {
+    name: {
+      type: String,
+      value: ''
+    },
+    replies: {
+      type: Number,
+      value: 0
+    },
+    postDate: {
       type: String,
       value: ''
     }

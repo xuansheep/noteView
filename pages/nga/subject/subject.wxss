@@ -1,6 +1,25 @@
 /* pages/nga/subject.wxss */
+.search {
+  border: 1rpx var(--border) solid;
+  height: 58rpx;
+  background-color: white;
+  margin: 30rpx 16rpx;
+  border-radius: 5px;
+}
 .search-input {
-  border: 1rpx #f3f3f3 solid;
-  height: 30rpx;
-  margin-bottom: 12rpx;
+  padding: 4rpx 12rpx;
+  font-size: 28rpx;
+  color: var(--content);
+  width: 85%;
+  height: 50rpx;
+}
+.search-icon {
+  float: right;
+  height: 58rpx;
+  width: 10%;
+  text-align: center;
+  line-height: 50rpx;
+}
+.search-icon:hover {
+  color: var(--content);
 }

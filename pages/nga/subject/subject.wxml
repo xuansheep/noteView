@@ -1,17 +1,19 @@
 <!--pages/nga/subject.wxml-->
-<view style="height: 100rpx; background-color: #cccccc;">
-  <input></input>
+<view class="search">
+  <i-icon class="search-icon" type="search" size="22" color="var(--subColor)" bindtap="search" />
+  <input class="search-input" placeholder="search something..." model:value="{{word}}" />
 </view>
 <scroll-view>
   <List wx:for="{{dataList}}" wx:key="id" 
   title="{{item.subject}}" 
-  description="{{item.author}}"
+  name="{{item.author}}"
+  replies="{{item.replies}}"
   bindtap="toReply"
   data-tid="{{item.tid}}"
   data-subject="{{item.subject}}"
   ></List>
 </scroll-view>
 <view>
-  <i-load-more loading="{{loading}}" />
-  <i-load-more wx:if="{{empty}}" tip="暂无数据" />
+  <i-load-more wx:if="{{loading}}" loading="{{loading}}" />
+  <i-load-more wx:if="{{!loading && empty}}" tip="暂无数据" loading="{{false}}" />
 </view>

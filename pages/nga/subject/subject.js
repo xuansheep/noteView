@@ -12,8 +12,9 @@ Page({
     form: {
       page: 0,
       size: 20,
-      word: '',
+      subject: '',
     },
+    word: '',
     loading: false,
     empty: false
   },
@@ -93,7 +94,7 @@ Page({
         this.setData({dataList: list, loading: false})
       } else {
         this.setData({loading: false, empty: true})
-        if (this.dataList.length > 0) {
+        if (this.data.dataList.length > 0) {
           setTimeout(() => {
             this.setData({empty: false})
           }, 1500)
@@ -109,5 +110,12 @@ Page({
     wx.navigateTo({
       url: '../reply/reply?tid=' + tid + '&subject=' + subject,
     })
+  },
+  search: function() {
+    this.data.form.subject = this.data.word
+    console.log(this.data.form.word)
+    this.data.form.page = 0
+    this.setData({dataList: []})
+    this.getList()
   }
 })

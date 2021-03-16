@@ -1,7 +1,7 @@
 /* components/detail/detail.wxss */
 .detail {
-  border-bottom: 1rpx #cccccc solid;
-  padding: 30rpx 12px;
+  border-bottom: 1rpx var(--border) solid;
+  padding: 30rpx 16rpx;
 }
 .detail-avatar {
   height: 78rpx;
@@ -13,14 +13,15 @@
   margin-left: 90rpx;
 }
 .detail-name {
-  font-size: 30rpx;
+  color: var(--content);
+  font-size: 26rpx;
 }
 .detail-description {
   margin-top: 12rpx;
-  font-size: 24rpx;
-  color: #aaaaaa;
+  font-size: 22rpx;
+  color: var(--subColor);
 }
 .detail-content {
-  margin-top: 24rpx;
-  font-size: 30rpx;
+  margin: 36rpx 0;
+  font-size: 28rpx;
 }

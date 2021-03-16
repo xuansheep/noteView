@@ -1,13 +1,28 @@
 /* components/list/list.wxss */
 .list {
-  border-bottom: 1rpx #ececec solid;
-  padding: 30rpx 12px;
+  border-bottom: 1rpx var(--border) solid;
+  padding: 30rpx 16rpx 12rpx 16rpx;
 }
 .list-title {
+  color: var(--title);
   font-size: 30rpx;
   margin-bottom: 16rpx;
 }
 .list-description {
-  font-size: 24rpx;
-  color: #aaaaaa;
+  font-size: 20rpx;
+  color: var(--subColor);
+}
+.list-description-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+.list-description-name {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 2rpx;
+}
+.list-description-replies {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 2rpx;
 }
