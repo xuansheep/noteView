@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "i-detail": "/components/detail/detail"
+    "Detail": "/components/detail/detail",
+    "i-load-more": "/lib/dist/load-more/index"
   },
   "navigationBarTitleText": "回复"
 }

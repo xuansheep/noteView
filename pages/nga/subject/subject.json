@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "i-list": "/components/list/list"
+    "List": "/components/list/list",
+    "i-load-more": "/lib/dist/load-more/index"
   },
   "navigationBarTitleText": "帖子"
 }

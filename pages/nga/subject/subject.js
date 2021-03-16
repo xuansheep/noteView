@@ -10,19 +10,19 @@ Page({
   data: {
     dataList: [],
     form: {
-      page: 1,
+      page: 0,
       size: 20,
       word: '',
-    }
+    },
+    loading: false,
+    empty: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    http.post(ports.nga.subject.list, this.data.form).then((res) => {
-      this.setData({dataList: res.records})
-    })
+    this.getList()
   },
 
   /**
@@ -64,14 +64,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.data.form.page++
-    http.post(ports.nga.subject.list, this.data.form).then((res) => {
-      var list = this.data.dataList
-      res.records.forEach(item => {
-        list.push(item)
-      })
-      this.setData({dataList: list})
-    })
+    if (this.data.loading) {
+      return
+    }
+    this.getList()
   },
 
   /**
@@ -81,10 +77,37 @@ Page({
 
   },
 
+  /**
+   * 自定义函数
+   */
+  getList: function () {
+    this.setData({loading: true})
+    var params = {...this.data.form, page: this.data.form.page + 1}
+    http.post(ports.nga.subject.list, params).then((res) => {
+      if (res.records.length > 0) {
+        var list = this.data.dataList
+        this.data.form.page++
+        res.records.forEach(item => {
+          list.push(item)
+        })
+        this.setData({dataList: list, loading: false})
+      } else {
+        this.setData({loading: false, empty: true})
+        if (this.dataList.length > 0) {
+          setTimeout(() => {
+            this.setData({empty: false})
+          }, 1500)
+        }
+      }
+    }, () => {
+      this.setData({loading: false})
+    })
+  },
   toReply: function (e) {
     var tid = e.currentTarget.dataset.tid
+    var subject = e.currentTarget.dataset.subject
     wx.navigateTo({
-      url: '../reply/reply?tid=' + tid,
+      url: '../reply/reply?tid=' + tid + '&subject=' + subject,
     })
   }
 })

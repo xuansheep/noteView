@@ -1,10 +1,11 @@
 /* components/list/list.wxss */
 .list {
   border-bottom: 1rpx #ececec solid;
-  padding: 30rpx 8px;
+  padding: 30rpx 12px;
 }
 .list-title {
   font-size: 30rpx;
+  margin-bottom: 16rpx;
 }
 .list-description {
   font-size: 24rpx;

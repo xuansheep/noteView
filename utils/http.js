@@ -67,7 +67,10 @@ function fun(port, type, data, contentType) {
         success: function (res) {
           wx.stopPullDownRefresh();
           if (res.data && res.data.code === 200) {
-            resolve(res.data.data)
+            setTimeout(() => {
+              resolve(res.data.data)
+            }, 5000)
+            
           } else {
             wx.showToast({
               title: res.data.message,

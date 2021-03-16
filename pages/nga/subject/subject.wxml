@@ -1,9 +1,17 @@
 <!--pages/nga/subject.wxml-->
+<view style="height: 100rpx; background-color: #cccccc;">
+  <input></input>
+</view>
 <scroll-view>
-  <i-list wx:for="{{dataList}}" wx:key="id" 
+  <List wx:for="{{dataList}}" wx:key="id" 
   title="{{item.subject}}" 
   description="{{item.author}}"
   bindtap="toReply"
   data-tid="{{item.tid}}"
-  ></i-list>
+  data-subject="{{item.subject}}"
+  ></List>
 </scroll-view>
+<view>
+  <i-load-more loading="{{loading}}" />
+  <i-load-more wx:if="{{empty}}" tip="暂无数据" />
+</view>

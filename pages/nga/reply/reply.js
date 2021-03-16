@@ -13,7 +13,10 @@ Page({
       tid: '',
       page: 1,
       size: 10
-    }
+    },
+    subject: '',
+    loading: false,
+    empty: false
   },
 
   /**
@@ -21,9 +24,8 @@ Page({
    */
   onLoad: function (options) {
     this.data.form.tid = options.tid
-    http.post(ports.nga.reply.list, this.data.form).then((res) => {
-      this.setData({dataList: res.records})
-    })
+    this.setData({subject: options.subject})
+    this.getList()
   },
 
   /**
@@ -65,7 +67,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.loading) {
+      return
+    }
+    this.getList()
   },
 
   /**
@@ -73,5 +78,32 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  /**
+   * 自定义函数
+   */
+  getList: function () {
+    this.setData({loading: true})
+    var params = {...this.data.form, page: this.data.form.page + 1}
+    http.post(ports.nga.reply.list, params).then((res) => {
+      if (res.records.length > 0) {
+        var list = this.data.dataList
+        this.data.form.page++
+        res.records.forEach(item => {
+          list.push(item)
+        })
+        this.setData({dataList: list, loading: false})
+      } else {
+        this.setData({loading: false, empty: true})
+        if (this.data.dataList.length > 0) {
+          setTimeout(() => {
+            this.setData({empty: false})
+          }, 1500)
+        }
+      }
+    }, () => {
+      this.setData({loading: false})
+    })
+  },
 })

@@ -2,11 +2,11 @@
 <view class="detail">
   <view>
     <view class="detail-avatar">
-      <cover-image style="border-radius: 5px" src="{{avatar}}"></cover-image>
+      <i-avatar size="large" shape="square" src="{{avatar}}"></i-avatar>
     </view>
     <view class="header-right">
       <view class="detail-name">
-        <text>{{name}}</text>
+        <text>{{name ? name : '匿名'}}</text>
       </view>
       <view class="detail-description">
         <text>###</text>
