@@ -11,7 +11,7 @@ Page({
     dataList: [],
     form: {
       tid: '',
-      page: 1,
+      page: 0,
       size: 10
     },
     subject: '',
