@@ -1,7 +1,8 @@
 const application_json = "application/json;charset=UTF-8";
 const application_form = 'application/x-www-form-urlencoded;charset=UTF-8';
 
-const server_url = 'https://notes.xuanss.com'
+// const server_url = 'https://notes.xuanss.com'
+const server_url = 'http://localhost:10001'
 
 const ports = {
   user: {
@@ -27,60 +28,45 @@ const ports = {
 },
 }
 
-function getToken() {
-  let promise = new Promise((resolve, reject) => {
-    var app = getApp()
-    if(!app.globalData.token) {
-      // wx.request({
-      //   url: server_url + ports.user.signIn,
-      //   method: 'POST',
-      //   success: (res) => {
-      //     wx.stopPullDownRefresh();
-      //     app.globalData.token = res.data.data.token
-      //     resolve(app.globalData.token)
-      //   },
-      //   fail: function (res) {
-      //     wx.stopPullDownRefresh();
-      //     reject(app.globalData.token)
-      //   }
-      // })
-      app.globalData.token = res.data.data.token
-      resolve(app.globalData.token)
-    }else {
-      resolve(app.globalData.token)
-    }
+function signIn(jsCode) {
+  var app = getApp()
+  fun(ports.user.signIn, 'POST', {jsCode: jsCode}).then((res) => {
+    app.globalData.token = res
+    return app.globalData.token
   })
-  return promise
+}
+
+function getToken() {
+  var app = getApp()
+  return app.globalData.token
 }
 
 function fun(port, type, data, contentType) {
   let promise = new Promise((resolve, reject) => {
-    getToken().then((token) => {
-      wx.request({
-        url: server_url + port,
-        method: type,
-        data: data,
-        header: {
-          'content-type': contentType ? contentType : application_form,
-          'token': token
-        },
-        success: function (res) {
-          wx.stopPullDownRefresh();
-          if (res.data && res.data.code === 200) {
-            resolve(res.data.data)
-          } else {
-            wx.showToast({
-              title: res.data.message,
-              icon: 'none',
-              duration: 2000
-            })
-          }
-        },
-        fail: function (res) {
-          wx.stopPullDownRefresh();
-          reject(res)
+    wx.request({
+      url: server_url + port,
+      method: type,
+      data: data,
+      header: {
+        'content-type': contentType ? contentType : application_form,
+        'Authorization': getToken()
+      },
+      success: function (res) {
+        wx.stopPullDownRefresh();
+        if (res.data && res.data.code === 200) {
+          resolve(res.data.data)
+        } else {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 2000
+          })
         }
-      })
+      },
+      fail: function (res) {
+        wx.stopPullDownRefresh();
+        reject(res)
+      }
     })
   })
   return promise
@@ -88,8 +74,8 @@ function fun(port, type, data, contentType) {
 
 module.exports = {
   ports,
-  token: function() {
-    return getToken()
+  signIn: function(jsCode) {
+    return signIn(jsCode)
   },
   get:function(port, data) {
     return fun(port, 'GET', data)

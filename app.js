@@ -13,18 +13,12 @@ App({
       success: res => {
         console.log('jsCode', res)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        http.token()
-
-        wx.getSystemInfo({
-          success: (result) => {
-            console.log("systemInfo", result)
-          },
-        })
+        http.signIn(res.code)
       }
     })
   },
   globalData: {
     userInfo: null,
-    token: 'xcx_auth_string',
+    token: '',
   }
 })
