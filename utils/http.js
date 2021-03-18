@@ -1,13 +1,13 @@
-const application_json = "application/json;charset=UTF-8";
-const application_form = 'application/x-www-form-urlencoded;charset=UTF-8';
+const application_json = "application/json;charset=UTF-8"
+const application_form = 'application/x-www-form-urlencoded;charset=UTF-8'
 
-// const server_url = 'https://notes.xuanss.com'
-const server_url = 'http://localhost:10001'
+const server_url = 'https://notes.xuanss.com'
+// const server_url = 'http://localhost:10001'
 
 const ports = {
   user: {
     signIn: '/api/user/xcx/signIn',
-    userInfo: '/api/user/xcx/userInfop'
+    userInfo: '/api/user/xcx/userInfo'
   },
   nga: {
     subject: {
@@ -30,7 +30,6 @@ const ports = {
 }
 
 function signIn(jsCode) {
-  var app = getApp()
   let promise = new Promise((resolve, reject) => {
     fun(ports.user.signIn, 'POST', {jsCode: jsCode}).then((res) => {
       resolve(res)
@@ -42,7 +41,7 @@ function signIn(jsCode) {
 }
 
 function getToken() {
-  var app = getApp()
+  const app = getApp()
   return app.globalData.token
 }
 

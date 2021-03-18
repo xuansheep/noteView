@@ -1,4 +1,4 @@
-const app = getApp()
+var app = getApp()
 const { ports } = require('../../utils/http')
 const http = require('../../utils/http')
 
@@ -10,7 +10,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    isAuth: true
+    isAuth: true,
+    buttonLoading: true
   },
   // 事件处理函数
   bindViewTap() {
@@ -19,12 +20,12 @@ Page({
     })
   },
   onLoad() {
-    console.log('load')
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
       })
     }
+    const _this = this
     // 登录
     wx.login({
       success: res => {
@@ -35,9 +36,21 @@ Page({
           if(res.token) {
             app.globalData.token = res.token
           }else {
-            this.getUser().then(res => {
-              if(!res) {
-                this.setData({isAuth: false})
+            wx.getSetting({
+              success (res){
+                if (res.authSetting['scope.userInfo']) {
+                  wx.getUserInfo({
+                    success: function(res) {
+                      http.post(ports.user.userInfo, {openId: app.globalData.userInfo.openId, 
+                        encryptedData: res.encryptedData, iv: res.iv}).then(res => {
+                        app.globalData.token = res.token
+                        _this.setData({buttonLoading: false})
+                      })
+                    }
+                  })
+                }else {
+                  _this.setData({isAuth: false, buttonLoading: false})
+                }
               }
             })
           }
@@ -61,41 +74,22 @@ Page({
   getUserInfo(e) {
     // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
     console.log(e)
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+    // this.setData({
+    //   userInfo: e.detail.userInfo,
+    //   hasUserInfo: true
+    // })
+    http.post(ports.user.userInfo, {openId: app.globalData.userInfo.openId, 
+      encryptedData: e.detail.encryptedData, iv: e.detail.iv}).then(res => {
+      app.globalData.token = res.token
+      this.enter()
     })
   },
   enter() {
-    var app = getApp();
-    if(!app.globalData.tokan) {
+    if(!app.globalData.token) {
       return;
     }
     wx.redirectTo({
       url: '../nga/subject/subject',
     })
-  },
-  getUser() {
-    let promise = new Promise((resolve, reject) => {
-      wx.getSetting({
-        success (res){
-          if (res.authSetting['scope.userInfo']) {
-            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-            wx.getUserInfo({
-              success: function(res) {
-                console.log(res)
-                http.post(ports.user.userInfo, {openId: app.globalData.userInfo.openId, encryptedData: res.encryptedData, iv: res.iv}).then(res => {
-                  app.globalData.token = res.token
-                  resolve(true)
-                })
-              }
-            })
-          } else {
-            reject(false)
-          }
-        }
-      })
-    })
-    return promise
   }
 })
