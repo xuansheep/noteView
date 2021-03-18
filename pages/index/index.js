@@ -11,7 +11,8 @@ Page({
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
     isAuth: true,
-    buttonLoading: true
+    enterLoading: true,
+    userLoading: false,
   },
   // 事件处理函数
   bindViewTap() {
@@ -35,6 +36,7 @@ Page({
           app.globalData.userInfo.openId = res.xcxOpenId
           if(res.token) {
             app.globalData.token = res.token
+            _this.setData({enterLoading: false})
           }else {
             wx.getSetting({
               success (res){
@@ -78,11 +80,22 @@ Page({
     //   userInfo: e.detail.userInfo,
     //   hasUserInfo: true
     // })
-    http.post(ports.user.userInfo, {openId: app.globalData.userInfo.openId, 
-      encryptedData: e.detail.encryptedData, iv: e.detail.iv}).then(res => {
-      app.globalData.token = res.token
-      this.enter()
-    })
+    if('getUserInfo:ok' === e.detail.errMsg){
+      this.setData({userLoading: true})
+      http.post(ports.user.userInfo, {openId: app.globalData.userInfo.openId, 
+        encryptedData: e.detail.encryptedData, iv: e.detail.iv}).then(res => {
+        app.globalData.token = res.token
+        this.enter()
+      }, () => {
+        this.setData({userLoading: false})
+      })
+    } else {
+      wx.showToast({
+        title: '用户取消授权',
+        icon: 'none',
+        duration: 2000
+      })
+    }
   },
   enter() {
     if(!app.globalData.token) {

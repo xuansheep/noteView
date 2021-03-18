@@ -18,8 +18,8 @@
     </block>
   </view>
   <view class="usermotto">
-    <button wx:if="{{isAuth}}" type="primary" loading="{{buttonLoading}}" bindtap="enter">进入</button>
-    <button wx:else type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+    <button wx:if="{{isAuth}}" type="primary" loading="{{enterLoading}}" bindtap="enter">进入</button>
+    <button wx:else type="primary" loading="{{userLoading}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
 
   </view>
 </view>
