@@ -1,8 +1,8 @@
 const application_json = "application/json;charset=UTF-8"
 const application_form = 'application/x-www-form-urlencoded;charset=UTF-8'
 
-// const server_url = 'https://notes.xuanss.com'
-const server_url = 'http://localhost:10001'
+const server_url = 'https://notes.xuanss.com'
+// const server_url = 'http://localhost:10001'
 
 const ports = {
   user: {
