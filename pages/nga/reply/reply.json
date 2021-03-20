@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-load-more": "/lib/dist/load-more/index",
+    "i-avatar": "/lib/dist/avatar/index"
+  },
+  "navigationBarTitleText": "详情"
+}

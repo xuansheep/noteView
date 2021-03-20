@@ -1,0 +1,70 @@
+/* pages/nga/reply/reply.wxss */
+.subject-text {
+  color: var(--title);
+  font-size: 42rpx;
+  font-weight: bold;
+  padding: 30rpx 16rpx;
+}
+.detail {
+  border-bottom: 1rpx var(--border) solid;
+  padding: 30rpx 16rpx;
+}
+.detail-avatar {
+  height: 78rpx;
+  width: 78rpx;
+  float: left;
+  border-radius: 5px;
+}
+.header-right {
+  margin-left: 90rpx;
+}
+.detail-name {
+  color: var(--content);
+  font-size: 26rpx;
+}
+.detail-description {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: var(--subColor);
+}
+.detail-content {
+  margin: 36rpx 0;
+  font-size: 28rpx;
+}
+
+.reply-quote{
+  background-color: var(--background);
+  padding: 20rpx;
+  margin-left: 20rpx;
+  font-size: 20rpx;
+}
+.reply-lou{
+  float: right;
+  text-align: right;
+  color: var(--content);
+  font-size: 24rpx;
+}
+.reply-postdate{
+  margin-right: 20rpx;
+  color: var(--content);
+  font-size: 24rpx;
+}
+.reply-attach-icon{
+  cursor: pointer;
+  display: inline-block;
+  height: 36rpx;
+  line-height: 36rpx;
+  margin: 6rpx 8rpx 6rpx 0;
+  padding: 0 16rpx;
+  border: 1rpx solid var(--border);
+  border-radius: 3px;
+  background: var(--divider);
+  font-size: 20rpx;
+  vertical-align: middle;
+  opacity: 1;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.button-click {
+  color: var(--main)
+}
