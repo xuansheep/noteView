@@ -4,7 +4,7 @@
     "i-load-more": "/lib/dist/load-more/index",
     "i-icon": "/lib/dist/icon/index"
   },
-  "navigationBarTitleText": "帖子",
+  "navigationBarTitleText": "历史",
   "enablePullDownRefresh": true,
   "backgroundColor": "#f8f8f9",
   "backgroundTextStyle": "dark"

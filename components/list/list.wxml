@@ -17,6 +17,12 @@
       <view class="list-description-replies">
         {{replies}}
       </view>
+      <view style="margin-left: 20rpx" class="list-description-icon">
+        <i-icon type="time_fill" size="16" color="var(--subColor)" />
+      </view>
+      <view class="list-description-replies">
+        {{postDate}}
+      </view>
     </view>
   </view>
 </view>

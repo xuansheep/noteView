@@ -3,7 +3,45 @@
   <text>{{subject}}</text>
 </view>
 <scroll-view>
-  <Detail wx:for="{{dataList}}" wx:key="id" avatar="{{item.avatar}}" name="{{item.username}}" content="{{item.content}}"></Detail>
+  <view class="detail" wx:for="{{dataList}}" wx:key="index">
+    <view>
+      <view wx:if="{{item.lou===0}}" class="reply-lou">
+        <button class="{{form.onlyImageFlag ? 'button-click' : ''}}" size="mini" style="font-size: 12px"
+                bindtap="onlyImage">只看图片</button>
+        <button class="{{form.onlyLouFlag ? 'button-click' : ''}}" size="mini" style="font-size: 12px; margin-left: 5px"
+                bindtap="onlyLou" data-author-id="{{item.authorId}}">只看楼主</button>
+      </view>
+      <view wx:if="{{item.lou!==0}}" class="reply-lou">
+        <text class="reply-postdate">{{postDate}}</text>
+        <text>#{{item.lou}}</text>
+      </view>
+      <view class="detail-avatar">
+        <i-avatar size="large" shape="square" src="{{item.avatar}}"></i-avatar>
+      </view>
+      <view class="header-right">
+        <view class="detail-name">
+          <text>{{item.username ? item.username : '#anony_'}}</text>
+        </view>
+        <view class="detail-description">
+          <text>###</text>
+        </view>
+      </view>
+    </view>
+    <view class="detail-content">
+      <rich-text nodes="{{item.content}}"></rich-text>
+    </view>
+    <view style="height: 30rpx"></view>
+    <view style="width: 100%">
+        <view class="reply-attach-icon"
+        wx:for="{{item.attachList}}"
+        wx:key="index"
+        wx:for-item="attach"
+        data-attach-List="{{item.attachList}}"
+        data-attach-Index="{{index}}"
+        bindtap="showAttach"
+        >显示附件</view>
+    </view>
+  </view>
 </scroll-view>
 <view>
   <i-load-more wx:if="{{loading}}" loading="{{loading}}" />

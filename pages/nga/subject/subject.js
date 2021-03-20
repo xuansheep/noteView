@@ -90,6 +90,9 @@ Page({
         var list = this.data.dataList
         this.data.form.page++
         res.records.forEach(item => {
+          if (item.author.startsWith('#anony_')) {
+            item.author = "#anony_"
+          }
           list.push(item)
         })
         this.setData({dataList: list, loading: false})
@@ -114,7 +117,6 @@ Page({
   },
   search: function() {
     this.data.form.subject = this.data.word
-    console.log(this.data.form.word)
     this.data.form.page = 0
     this.setData({dataList: []})
     this.getList()

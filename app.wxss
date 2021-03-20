@@ -1,5 +1,7 @@
 /**app.wxss**/
 Page {
+  --main: #f1795c;
+
   --primary: #2d8cf0;
   --lightPrimary: #5cadff;
   --darkPrimary: #2b85e4;

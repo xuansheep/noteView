@@ -1,5 +1,6 @@
 const { ports } = require("../../../utils/http")
 const http = require("../../../utils/http")
+const util = require("../../../utils/util")
 
 // pages/nga/reply/reply.js
 Page({
@@ -12,7 +13,9 @@ Page({
     form: {
       tid: '',
       page: 0,
-      size: 10
+      size: 10,
+      onlyImageFlag: false,
+      onlyLouFlag: false,
     },
     subject: '',
     loading: false,
@@ -91,6 +94,8 @@ Page({
         var list = this.data.dataList
         this.data.form.page++
         res.records.forEach(item => {
+          item.avatar = util.proxyImage(item.avatar)
+          item.postDate = util.formatDateMMddHHmmss(item.postDate)
           list.push(item)
         })
         this.setData({dataList: list, loading: false})
@@ -106,4 +111,33 @@ Page({
       this.setData({loading: false})
     })
   },
+  onlyImage() {
+    this.setData({'form.onlyImageFlag': !this.data.form.onlyImageFlag})
+    this.data.form.page = 0
+    this.setData({dataList: []})
+    this.getList()
+  },
+  onlyLou(e) {
+    this.setData({'form.onlyLouFlag': !this.data.form.onlyLouFlag})
+    if (this.data.form.onlyLouFlag) {
+      this.data.form.authorId = e.currentTarget.dataset.authorId
+    }else {
+      this.data.form.authorId = null
+    }
+    this.data.form.page = 0
+    this.setData({dataList: []})
+    this.getList()
+  },
+  showAttach(e){
+    var attachList = e.target.dataset.attachList
+    var index = e.target.dataset.attachIndex
+    var urlList = []
+    Object.keys(attachList).forEach(key => {
+      urlList.push('https://img.nga.178.com/attachments/' + attachList[key].attachurl)
+    })
+    wx.previewImage({
+      urls: urlList,
+      current: urlList[index]
+    })
+},
 })

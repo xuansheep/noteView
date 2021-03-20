@@ -46,6 +46,7 @@ function getToken() {
 }
 
 function fun(port, type, data, contentType) {
+  handleData(data)
   let promise = new Promise((resolve, reject) => {
     wx.request({
       url: server_url + port,
@@ -77,8 +78,19 @@ function fun(port, type, data, contentType) {
   return promise
 }
 
+function handleData(data) {
+  if (data) {
+    for (var key in data) {
+      if (data[key] == null || typeof(data[key]) == "undefined") {
+        delete data[key];
+      }
+    }
+  }
+}
+
 module.exports = {
   ports,
+  server_url,
   signIn: function(jsCode) {
     return signIn(jsCode)
   },

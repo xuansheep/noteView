@@ -4,10 +4,11 @@
   <input class="search-input" placeholder="search something..." model:value="{{word}}" />
 </view>
 <scroll-view>
-  <List wx:for="{{dataList}}" wx:key="id" 
+  <List wx:for="{{dataList}}" wx:key="index" 
   title="{{item.subject}}" 
   name="{{item.author}}"
   replies="{{item.replies}}"
+  postDate="{{item.postDate}}"
   bindtap="toReply"
   data-tid="{{item.tid}}"
   data-subject="{{item.subject}}"
