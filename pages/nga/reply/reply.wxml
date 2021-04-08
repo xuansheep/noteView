@@ -12,7 +12,7 @@
                 bindtap="onlyLou" data-author-id="{{item.authorId}}">只看楼主</button>
       </view>
       <view wx:if="{{item.lou!==0}}" class="reply-lou">
-        <text class="reply-postdate">{{postDate}}</text>
+        <text class="reply-postdate">{{item.postDate}}</text>
         <text>#{{item.lou}}</text>
       </view>
       <view class="detail-avatar">
@@ -23,7 +23,11 @@
           <text>{{item.username ? item.username : '#anony_'}}</text>
         </view>
         <view class="detail-description">
-          <text>###</text>
+          <text style="font-size: 18rpx">
+            <text>威望:{{item.username ? item.rvrc : '-'}} </text>
+            <text>铜币:{{item.username ? item.money : '-'}} </text>
+            <text>发帖:{{item.username ? item.postNum : '-'}} </text>
+          </text>
         </view>
       </view>
     </view>

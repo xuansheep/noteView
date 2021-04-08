@@ -96,6 +96,7 @@ Page({
         res.records.forEach(item => {
           item.avatar = util.proxyImage(item.avatar)
           item.postDate = util.formatDateMMddHHmmss(item.postDate)
+          item.rvrc = (item.rvrc/10).toFixed(1)
           list.push(item)
         })
         this.setData({dataList: list, loading: false})

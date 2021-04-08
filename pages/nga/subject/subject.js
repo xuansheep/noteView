@@ -59,6 +59,7 @@ Page({
    */
   onPullDownRefresh: function () {
     this.data.form.page = 0
+    this.setData({dataList: []})
     this.getList()
   },
 

@@ -47,7 +47,7 @@
 .reply-postdate{
   margin-right: 20rpx;
   color: var(--content);
-  font-size: 24rpx;
+  font-size: 22rpx;
 }
 .reply-attach-icon{
   cursor: pointer;

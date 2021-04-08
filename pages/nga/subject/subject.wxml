@@ -1,7 +1,7 @@
 <!--pages/nga/subject.wxml-->
 <view class="search">
   <i-icon class="search-icon" type="search" size="22" color="var(--subColor)" bindtap="search" />
-  <input class="search-input" placeholder="search something..." model:value="{{word}}" />
+  <input class="search-input" placeholder="search something..." model:value="{{word}}" bindconfirm="search" />
 </view>
 <scroll-view>
   <List wx:for="{{dataList}}" wx:key="index" 
