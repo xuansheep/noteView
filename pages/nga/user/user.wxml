@@ -1,0 +1,21 @@
+<!--pages/nga/user/user.wxml-->
+<view class="user">
+  <view>
+    <i-avatar size="large" shape="square" src="{{user.avatar}}" ></i-avatar>
+    <text class="user-username-span">{{user.username}}</text>
+  </view>
+  <view style="margin-top: 100rpx">
+    <i-cell-group>
+      <i-cell value="查看" is-link>
+        <view slot="icon">所有主题
+          <i-badge i-class="user-badge" count="{{subjectNum}}"></i-badge>
+        </view>
+      </i-cell>
+      <i-cell value="查看" is-link>
+        <view slot="icon">所有回复
+          <i-badge i-class="user-badge" count="{{replyNum}}"></i-badge>
+        </view>
+      </i-cell>
+    </i-cell-group>
+  </view>
+</view>

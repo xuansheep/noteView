@@ -1,0 +1,21 @@
+/* pages/nga/user/user.wxss */
+.user {
+  padding: 30rpx 16rpx;
+}
+.user-username-span {
+  margin-left: 20rpx;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+.user-card {
+  font-weight: bold;
+  padding: 12rpx;
+  width: 240rpx;
+  height: 100%;
+  float: right;
+}
+.user-badge {
+  background: antiquewhite;
+  color: #fff;
+  margin-left: 30rpx;
+}

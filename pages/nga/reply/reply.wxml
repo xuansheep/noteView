@@ -16,7 +16,7 @@
         <text>#{{item.lou}}</text>
       </view>
       <view class="detail-avatar">
-        <i-avatar size="large" shape="square" src="{{item.avatar}}"></i-avatar>
+        <i-avatar size="large" shape="square" src="{{item.avatar}}" bindtap="toUserCenter" data-uid="{{item.authorId}}"></i-avatar>
       </view>
       <view class="header-right">
         <view class="detail-name">
