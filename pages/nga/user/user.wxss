@@ -15,7 +15,12 @@
   float: right;
 }
 .user-badge {
-  background: antiquewhite;
-  color: #fff;
-  margin-left: 30rpx;
+  background: var(--disabled);
+  color: var(--content);
+  margin-left: 20rpx;
+  display: inline;
+  border-radius: 15px;
+  min-width: 10rpx;
+  padding: 4rpx 10rpx;
+  font-size: 20rpx;
 }

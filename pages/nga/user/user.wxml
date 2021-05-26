@@ -8,12 +8,12 @@
     <i-cell-group>
       <i-cell value="查看" is-link>
         <view slot="icon">所有主题
-          <i-badge i-class="user-badge" count="{{subjectNum}}"></i-badge>
+          <view class="user-badge">{{subjectNum}}</view>
         </view>
       </i-cell>
       <i-cell value="查看" is-link>
         <view slot="icon">所有回复
-          <i-badge i-class="user-badge" count="{{replyNum}}"></i-badge>
+          <view class="user-badge">{{replyNum}}</view>
         </view>
       </i-cell>
     </i-cell-group>
