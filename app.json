@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/nga/subject/subject",
-    "pages/nga/reply/reply"
+    "pages/nga/reply/reply",
+    "pages/nga/user/user"
   ],
   "window":{
     "backgroundTextStyle":"light",

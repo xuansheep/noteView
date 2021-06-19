@@ -1,0 +1,26 @@
+/* pages/nga/user/user.wxss */
+.user {
+  padding: 30rpx 16rpx;
+}
+.user-username-span {
+  margin-left: 20rpx;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+.user-card {
+  font-weight: bold;
+  padding: 12rpx;
+  width: 240rpx;
+  height: 100%;
+  float: right;
+}
+.user-badge {
+  background: var(--disabled);
+  color: var(--content);
+  margin-left: 20rpx;
+  display: inline;
+  border-radius: 15px;
+  min-width: 10rpx;
+  padding: 4rpx 10rpx;
+  font-size: 20rpx;
+}

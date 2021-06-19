@@ -140,5 +140,11 @@ Page({
       urls: urlList,
       current: urlList[index]
     })
-},
+  },
+  toUserCenter: function (e) {
+    var uid = e.currentTarget.dataset.uid
+    wx.navigateTo({
+      url: '../user/user?uid=' + uid
+    })
+  }
 })

@@ -11,6 +11,14 @@ const formatTime = date => {
   return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
 }
 
+const formatDate = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+
+  return `${[year, month, day].map(formatNumber).join('/')}`
+}
+
 const formatDateMMddHHmmss = date => {
   var date = new Date(date)
   const month = date.getMonth() + 1
@@ -49,6 +57,7 @@ const proxyImage = url => {
 
 module.exports = {
   formatTime,
+  formatDate,
   formatDateMMddHHmmss,
   proxyImage
 }

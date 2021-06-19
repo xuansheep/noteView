@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "i-avatar": "/lib/dist/avatar/index",
+    "i-cell-group": "/lib/dist/cell-group/index",
+    "i-cell": "/lib/dist/cell/index",
+    "i-badge": "/lib/dist/badge/index"
+  },
+  "navigationBarTitleText": "作者"
+}
