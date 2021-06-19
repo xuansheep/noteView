@@ -134,7 +134,7 @@ Page({
     var index = e.target.dataset.attachIndex
     var urlList = []
     Object.keys(attachList).forEach(key => {
-      urlList.push('https://img.nga.178.com/attachments/' + attachList[key].attachurl)
+      urlList.push(util.proxyImage('https://img.nga.178.com/attachments/' + attachList[key].attachurl))
     })
     wx.previewImage({
       urls: urlList,
